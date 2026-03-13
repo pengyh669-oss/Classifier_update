@@ -1,0 +1,6 @@
+2025123840,彭永恒,彭永恒,group_1,1845057,2025123840_彭永恒\2025123840_彭永恒_group_1_result-data-normalWord-1845057_20260312_111703.wav,2026-03-12 11:17:03,result_data_normalWord_1845057,result_data_normalWord,wav,True,False,录音文件保存成功
+2025123840,彭永恒,彭永恒,group_3,2377552,2025123840_彭永恒\2025123840_彭永恒_5.38s_group_3_result-data-special-2377552_20260312_121028.wav,2026-03-12 12:10:28,result_data_special_2377552,result_data_special,wav,True,False,录音文件保存成功,5.376,
+2025123840,彭永恒,彭永恒,group_3,2492155,2025123840_彭永恒\2025123840_彭永恒_6.88s_group_3_result-data-downWord-2492155_20260312_121038.wav,2026-03-12 12:10:38,result_data_downWord_2492155,result_data_downWord,wav,True,False,录音文件保存成功,6.879,
+2025123840,彭永恒,彭永恒,group_3,2492155,2025123840_彭永恒\2025123840_彭永恒_6.36s_group_3_result-data-downWord-2492155_20260312_121131.wav,2026-03-12 12:11:31,result_data_downWord_2492155,result_data_downWord,wav,True,False,录音文件保存成功,6.357,
+2025123840,彭永恒,彭永恒,group_4,256924,2025123840_彭永恒\2025123840_彭永恒_2.32s_group_4_result-data-free-256924_20260312_122347.wav,2026-03-12 12:23:47,result_data_free_256924,result_data_free,wav,True,False,录音文件保存成功,2.320,
+2025123840,彭永恒,彭永恒,group_1,725035,2025123840_彭永恒\2025123840_彭永恒_3.07s_group_1_result-data-special-725035_20260313_155144.wav,2026-03-13 15:51:44,result_data_special_725035,result_data_special,wav,True,False,录音文件保存成功,3.073,
