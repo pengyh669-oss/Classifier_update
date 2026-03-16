@@ -599,8 +599,18 @@ def load_and_download_all_data():
 
 def create_groups_from_processed_data(all_processed_data):
     """从处理后的数据创建实验组"""
+    target_group_size = 72
+    per_file_minimum = 12
+
+    if not all_processed_data:
+        return {}
+
+    total_unique_questions = sum(len(images) for images in all_processed_data.values())
+    if total_unique_questions < target_group_size:
+        return {}
+
     for file_key, images in all_processed_data.items():
-        if len(images) < 12:
+        if len(images) < per_file_minimum:
             return {}
 
     groups = {f'group_{i}': [] for i in range(1, 6)}
@@ -609,11 +619,11 @@ def create_groups_from_processed_data(all_processed_data):
         selected_images = []
         for file_key, images in all_processed_data.items():
             all_unique_keys = list(images.keys())
-            selected_keys = random.sample(all_unique_keys, min(12, len(all_unique_keys)))
+            selected_keys = random.sample(all_unique_keys, per_file_minimum)
             selected_images.extend([images[key] for key in selected_keys])
 
-        if len(selected_images) < 60:
-            remaining = 60 - len(selected_images)
+        if len(selected_images) < target_group_size:
+            remaining = target_group_size - len(selected_images)
             for file_key, images in all_processed_data.items():
                 if remaining <= 0:
                     break
@@ -623,6 +633,9 @@ def create_groups_from_processed_data(all_processed_data):
                     supplement = random.sample(available_keys, min(remaining, len(available_keys)))
                     selected_images.extend([images[key] for key in supplement])
                     remaining -= len(supplement)
+
+        if len(selected_images) < target_group_size:
+            return {}
 
         random.shuffle(selected_images)
         groups[group_name] = selected_images

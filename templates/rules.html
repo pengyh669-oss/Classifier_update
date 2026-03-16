@@ -331,15 +331,18 @@
                 </div>
                 {% endif %}
 
-                <form method="POST" action="{{ url_for('rules') }}">
+                <form method="POST" action="{{ url_for('rules') }}" autocomplete="off">
                     <div class="form-row">
                         <div class="form-col">
                             <div class="form-group">
-                                <label for="student_id"><strong>学号：</strong></label>
-                                <input type="text" id="student_id" name="student_id"
+                                <label for="student_id_display"><strong>学号：</strong></label>
+                                <input type="text" id="student_id_display" name="student_id_display"
                                     class="form-control form-control-lg" placeholder="请输入10位数字学号" required
                                     pattern="\d{10}" title="请输入10位数字学号" value="{{ student_id if student_id else '' }}"
-                                    maxlength="10" minlength="10">
+                                    maxlength="10" minlength="10" autocomplete="one-time-code" autocapitalize="off"
+                                    autocorrect="off" spellcheck="false" inputmode="numeric" readonly
+                                    onfocus="this.removeAttribute('readonly');">
+                                <input type="hidden" id="student_id" name="student_id" value="{{ student_id if student_id else '' }}">
                                 <small class="form-text">
                                     请输入您的10位数字学号
                                 </small>
@@ -404,7 +407,7 @@
 
     <script>
         // 学号输入验证
-        document.getElementById('student_id').addEventListener('input', function (e) {
+        document.getElementById('student_id_display').addEventListener('input', function (e) {
             this.value = this.value.replace(/[^0-9]/g, '');
             if (this.value.length > 10) {
                 this.value = this.value.slice(0, 10);
@@ -413,7 +416,8 @@
 
         // 表单提交验证
         document.querySelector('form').addEventListener('submit', function (e) {
-            const studentId = document.getElementById('student_id').value;
+            const studentId = document.getElementById('student_id_display').value;
+            document.getElementById('student_id').value = studentId;
             const studentName = document.getElementById('student_name').value.trim();
             let hasError = false;
             let errorMessage = '';
@@ -451,8 +455,8 @@
 
         // 自动聚焦到第一个输入框
         window.onload = function () {
-            if (!document.getElementById('student_id').value) {
-                document.getElementById('student_id').focus();
+            if (!document.getElementById('student_id_display').value) {
+                document.getElementById('student_id_display').focus();
             }
         };
     </script>
